@@ -146,12 +146,12 @@ export default function Footer() {
               Refund Policy
             </Link>
             <span className="text-emerald-800/50">•</span>
-            <a
-              href="#"
+            <Link
+              to="/privacy"
               className="text-emerald-100/50 hover:text-emerald-300 transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </motion.div>
 

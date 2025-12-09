@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import ProblemSolution from './components/ProblemSolution'
@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import ContactModal from './components/ContactModal'
 import TermsConditions from './components/TermsConditions'
 import RefundPolicy from './components/RefundPolicy'
+import PrivacyPolicy from './components/PrivacyPolicy'
 
 function HomePage({ onContactSalesClick }: { onContactSalesClick: () => void }) {
   return (
@@ -45,6 +46,7 @@ function App() {
           />
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/refund" element={<RefundPolicy />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
         <Footer />
         <ContactModal
