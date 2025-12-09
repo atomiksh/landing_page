@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, RefreshCcw, CreditCard, Clock, CheckCircle } from 'lucide-react'
+import { ArrowLeft, RefreshCcw } from 'lucide-react'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -52,152 +52,92 @@ export default function RefundPolicy() {
             </div>
           </motion.div>
 
-          {/* Key Highlights */}
-          <motion.div 
-            variants={itemVariants}
-            className="grid md:grid-cols-3 gap-4 mb-8"
-          >
-            <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-200">
-              <Clock className="w-8 h-8 text-emerald-600 mb-3" />
-              <h3 className="font-semibold text-slate-800 mb-1">14-Day Guarantee</h3>
-              <p className="text-sm text-slate-600">Full refund within 14 days of purchase</p>
-            </div>
-            <div className="bg-blue-50 rounded-2xl p-6 border border-blue-200">
-              <CreditCard className="w-8 h-8 text-blue-600 mb-3" />
-              <h3 className="font-semibold text-slate-800 mb-1">Easy Process</h3>
-              <p className="text-sm text-slate-600">Simple refund request via email</p>
-            </div>
-            <div className="bg-purple-50 rounded-2xl p-6 border border-purple-200">
-              <CheckCircle className="w-8 h-8 text-purple-600 mb-3" />
-              <h3 className="font-semibold text-slate-800 mb-1">No Questions Asked</h3>
-              <p className="text-sm text-slate-600">Your satisfaction is our priority</p>
-            </div>
-          </motion.div>
-
           <motion.div variants={itemVariants} className="prose prose-slate max-w-none">
             <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">Our Commitment to You</h2>
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">Refund Policy</h2>
               <p className="text-slate-600 mb-4">
-                At Atomik, we stand behind our product. We want you to be completely satisfied with your purchase. If you're not happy with our service for any reason, we offer a straightforward refund policy designed with your best interests in mind.
-              </p>
-              <p className="text-slate-600">
-                We believe in building trust with our customers, which is why we've made our refund process as simple and transparent as possible.
+                This Refund Policy describes the circumstances under which refunds may be available for Atomik subscriptions.
               </p>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">14-Day Money-Back Guarantee</h2>
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">14-Day Refund Period</h2>
               <p className="text-slate-600 mb-4">
-                <strong>For new subscribers:</strong> If you're not satisfied with Atomik within the first 14 days of your initial paid subscription, you may request a full refund. This applies to both monthly and annual subscription plans.
+                If you are not satisfied with Atomik within the first 14 days of your initial paid subscription, you may request a full refund. This applies to both monthly and annual subscription plans.
               </p>
-              <p className="text-slate-600 mb-4">
-                <strong>What qualifies:</strong>
+              <p className="text-slate-600">
+                Refund requests must be made within 14 days of your first payment. Refunds are not available after this period.
               </p>
-              <ul className="list-disc list-inside text-slate-600 space-y-2 ml-4">
-                <li>First-time subscribers on their initial billing cycle</li>
-                <li>Request made within 14 days of first payment</li>
-                <li>Account in good standing (no Terms of Service violations)</li>
-              </ul>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
               <h2 className="text-xl font-semibold text-slate-800 mb-4">How to Request a Refund</h2>
               <p className="text-slate-600 mb-4">
-                To request a refund, simply follow these steps:
-              </p>
-              <ol className="list-decimal list-inside text-slate-600 space-y-3 ml-4">
-                <li>
-                  <strong>Email us</strong> at <a href="mailto:billing@atomik.sh" className="text-emerald-600 hover:underline">billing@atomik.sh</a> with the subject line "Refund Request"
-                </li>
-                <li>
-                  <strong>Include</strong> your account email address and the reason for your refund request (optional but helpful for us to improve)
-                </li>
-                <li>
-                  <strong>Wait for confirmation</strong> — we'll process your request within 2-3 business days
-                </li>
-                <li>
-                  <strong>Receive your refund</strong> — funds will be returned to your original payment method within 5-10 business days
-                </li>
-              </ol>
-            </div>
-
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">Annual Subscription Refunds</h2>
-              <p className="text-slate-600 mb-4">
-                <strong>Within 14 days:</strong> Full refund of the annual subscription fee.
-              </p>
-              <p className="text-slate-600 mb-4">
-                <strong>After 14 days:</strong> We do not offer prorated refunds for annual subscriptions after the 14-day window. However, you may:
+                To request a refund, please contact us at <a href="mailto:legal@atomik.sh" className="text-emerald-600 hover:underline">legal@atomik.sh</a> with the subject line "Refund Request" and include:
               </p>
               <ul className="list-disc list-inside text-slate-600 space-y-2 ml-4">
-                <li>Continue using the service until your subscription period ends</li>
-                <li>Cancel auto-renewal to prevent future charges</li>
-                <li>Contact us to discuss your specific situation — we review requests on a case-by-case basis</li>
+                <li>Your account email address</li>
+                <li>The reason for your refund request</li>
               </ul>
+              <p className="text-slate-600 mt-4">
+                We will review your request and process refunds as appropriate.
+              </p>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">Monthly Subscription Refunds</h2>
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">Annual Subscriptions</h2>
+              <p className="text-slate-600 mb-4">
+                <strong>Within 14 days:</strong> Full refund available.
+              </p>
+              <p className="text-slate-600">
+                <strong>After 14 days:</strong> Refunds are not available for annual subscriptions after the 14-day period. You may cancel your subscription to prevent future renewals.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">Monthly Subscriptions</h2>
               <p className="text-slate-600 mb-4">
                 <strong>Within 14 days of first payment:</strong> Full refund available.
               </p>
-              <p className="text-slate-600 mb-4">
-                <strong>Subsequent months:</strong> We do not offer refunds for monthly subscriptions after the initial 14-day period. You may cancel your subscription at any time to prevent future charges.
-              </p>
               <p className="text-slate-600">
-                <strong>Cancellation:</strong> When you cancel, you'll retain access to the service until the end of your current billing period.
+                <strong>Subsequent months:</strong> Refunds are not available for monthly subscriptions after the initial 14-day period. You may cancel your subscription at any time to prevent future charges.
               </p>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">What's Not Covered</h2>
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">Refund Processing</h2>
+              <p className="text-slate-600">
+                Approved refunds will be processed and returned to your original payment method. Processing times may vary depending on your payment provider.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">Non-Refundable Items</h2>
               <p className="text-slate-600 mb-4">
                 Refunds may not be available in the following circumstances:
               </p>
               <ul className="list-disc list-inside text-slate-600 space-y-2 ml-4">
+                <li>Requests made after the 14-day refund period</li>
                 <li>Accounts terminated due to Terms of Service violations</li>
-                <li>Requests made after the 14-day refund window</li>
-                <li>Users who have previously received a refund from Atomik</li>
                 <li>Promotional or discounted subscriptions (unless otherwise stated)</li>
-                <li>Add-on services or one-time purchases (evaluated case-by-case)</li>
               </ul>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">Free Plan</h2>
-              <p className="text-slate-600 mb-4">
-                We offer a free Community plan for new users. With the free plan:
-              </p>
-              <ul className="list-disc list-inside text-slate-600 space-y-2 ml-4">
-                <li>No payment information is required</li>
-                <li>You have access to basic features</li>
-                <li>You can upgrade anytime to access premium features</li>
-              </ul>
-              <p className="text-slate-600 mt-4">
-                We recommend trying our free plan before committing to a paid subscription to ensure Atomik meets your needs.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">Chargebacks</h2>
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">Cancellation</h2>
               <p className="text-slate-600">
-                We encourage you to contact us directly for any billing issues before initiating a chargeback with your bank or credit card company. Chargebacks result in additional fees and may lead to account termination. We're committed to resolving any issues quickly and fairly.
+                You may cancel your subscription at any time. When you cancel, you will retain access to the service until the end of your current billing period. Cancellation does not entitle you to a refund for the current billing period.
               </p>
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-8">
               <h2 className="text-xl font-semibold text-slate-800 mb-4">Contact Us</h2>
               <p className="text-slate-600 mb-4">
-                If you have any questions about our refund policy or need assistance, please don't hesitate to reach out:
+                If you have any questions about our refund policy, please contact us at:
               </p>
-              <div className="space-y-2">
-                <p className="text-slate-600">
-                  <strong>Email:</strong> <a href="mailto:billing@atomik.sh" className="text-emerald-600 hover:underline">billing@atomik.sh</a>
-                </p>
-                <p className="text-slate-600">
-                  <strong>Response Time:</strong> Within 24 hours on business days
-                </p>
-              </div>
+              <a href="mailto:legal@atomik.sh" className="text-emerald-600 font-medium mt-2 inline-block hover:underline">
+                legal@atomik.sh
+              </a>
             </div>
           </motion.div>
         </motion.div>
