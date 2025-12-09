@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, HelpCircle, MessageCircle } from 'lucide-react'
 
+interface FAQProps {
+  onContactClick: () => void
+}
+
 const faqs = [
   {
     question: "What's included in the free plan?",
@@ -42,7 +46,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
-export default function FAQ() {
+export default function FAQ({ onContactClick }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
@@ -133,9 +137,11 @@ export default function FAQ() {
           transition={{ delay: 0.5 }}
           className="mt-12 text-center"
         >
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="inline-flex items-center gap-4 px-6 py-4 bg-emerald-50 rounded-2xl border border-emerald-200"
+          <motion.button
+            onClick={onContactClick}
+            whileHover={{ scale: 1.02, boxShadow: '0 8px 25px rgba(16,185,129,0.15)' }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-4 px-6 py-4 bg-emerald-50 rounded-2xl border border-emerald-200 cursor-pointer transition-all"
           >
             <motion.div
               animate={{ rotate: [0, 10, -10, 0] }}
@@ -146,13 +152,10 @@ export default function FAQ() {
             <div className="text-left">
               <p className="font-semibold text-slate-800">Still have questions?</p>
               <p className="text-sm text-slate-600">
-                Reach out to us at{' '}
-                <a href="mailto:support@atomik.security" className="text-emerald-600 hover:underline">
-                  support@atomik.security
-                </a>
+                Click here to contact us
               </p>
             </div>
-          </motion.div>
+          </motion.button>
         </motion.div>
       </div>
     </section>

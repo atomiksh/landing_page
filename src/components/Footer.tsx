@@ -1,10 +1,6 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import Logo from './Logo'
-
-interface FooterProps {
-  onTermsClick: () => void
-  onRefundClick: () => void
-}
 
 const footerLinks = {
   Product: [
@@ -36,7 +32,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
-export default function Footer({ onTermsClick, onRefundClick }: FooterProps) {
+export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-emerald-950 to-emerald-950/95 text-emerald-100/70">
       {/* Subtle top border gradient */}
@@ -136,29 +132,26 @@ export default function Footer({ onTermsClick, onRefundClick }: FooterProps) {
           className="py-6 border-t border-emerald-800/30"
         >
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <motion.button
-              onClick={onTermsClick}
-              whileHover={{ color: '#6ee7b7' }}
+            <Link
+              to="/terms"
               className="text-emerald-100/50 hover:text-emerald-300 transition-colors"
             >
               Terms & Conditions
-            </motion.button>
+            </Link>
             <span className="text-emerald-800/50">•</span>
-            <motion.button
-              onClick={onRefundClick}
-              whileHover={{ color: '#6ee7b7' }}
+            <Link
+              to="/refund"
               className="text-emerald-100/50 hover:text-emerald-300 transition-colors"
             >
               Refund Policy
-            </motion.button>
+            </Link>
             <span className="text-emerald-800/50">•</span>
-            <motion.a
+            <a
               href="#"
-              whileHover={{ color: '#6ee7b7' }}
               className="text-emerald-100/50 hover:text-emerald-300 transition-colors"
             >
               Privacy Policy
-            </motion.a>
+            </a>
           </div>
         </motion.div>
 

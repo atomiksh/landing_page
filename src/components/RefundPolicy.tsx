@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { ArrowLeft, RefreshCcw, CreditCard, Clock, CheckCircle } from 'lucide-react'
-
-interface RefundPolicyProps {
-  onClose: () => void
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,24 +15,27 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
-export default function RefundPolicy({ onClose }: RefundPolicyProps) {
+export default function RefundPolicy() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-slate-50 overflow-y-auto"
+      className="min-h-screen bg-slate-50"
     >
       <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <motion.button
-          onClick={onClose}
+        <motion.div
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 mb-8 transition-colors"
         >
-          <ArrowLeft className="w-5 h-5" />
-          Back to Home
-        </motion.button>
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 mb-8 transition-colors inline-flex"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Back to Home
+          </Link>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
@@ -107,7 +107,7 @@ export default function RefundPolicy({ onClose }: RefundPolicyProps) {
               </p>
               <ol className="list-decimal list-inside text-slate-600 space-y-3 ml-4">
                 <li>
-                  <strong>Email us</strong> at <span className="text-emerald-600">billing@atomik.security</span> with the subject line "Refund Request"
+                  <strong>Email us</strong> at <a href="mailto:billing@atomik.sh" className="text-emerald-600 hover:underline">billing@atomik.sh</a> with the subject line "Refund Request"
                 </li>
                 <li>
                   <strong>Include</strong> your account email address and the reason for your refund request (optional but helpful for us to improve)
@@ -164,18 +164,17 @@ export default function RefundPolicy({ onClose }: RefundPolicyProps) {
             </div>
 
             <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">Free Trial</h2>
+              <h2 className="text-xl font-semibold text-slate-800 mb-4">Free Plan</h2>
               <p className="text-slate-600 mb-4">
-                We offer a 14-day free trial for new users. During this trial period:
+                We offer a free Community plan for new users. With the free plan:
               </p>
               <ul className="list-disc list-inside text-slate-600 space-y-2 ml-4">
-                <li>No payment information is required to start</li>
-                <li>You have full access to Professional plan features</li>
-                <li>You can cancel anytime before the trial ends</li>
-                <li>If you don't cancel, your subscription will begin and you'll be charged</li>
+                <li>No payment information is required</li>
+                <li>You have access to basic features</li>
+                <li>You can upgrade anytime to access premium features</li>
               </ul>
               <p className="text-slate-600 mt-4">
-                We recommend trying our free trial before committing to a paid subscription to ensure Atomik meets your needs.
+                We recommend trying our free plan before committing to a paid subscription to ensure Atomik meets your needs.
               </p>
             </div>
 
@@ -193,7 +192,7 @@ export default function RefundPolicy({ onClose }: RefundPolicyProps) {
               </p>
               <div className="space-y-2">
                 <p className="text-slate-600">
-                  <strong>Email:</strong> <span className="text-emerald-600">billing@atomik.security</span>
+                  <strong>Email:</strong> <a href="mailto:billing@atomik.sh" className="text-emerald-600 hover:underline">billing@atomik.sh</a>
                 </p>
                 <p className="text-slate-600">
                   <strong>Response Time:</strong> Within 24 hours on business days
@@ -206,4 +205,3 @@ export default function RefundPolicy({ onClose }: RefundPolicyProps) {
     </motion.div>
   )
 }
-

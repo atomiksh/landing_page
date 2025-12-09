@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { ArrowLeft, FileText } from 'lucide-react'
-
-interface TermsConditionsProps {
-  onClose: () => void
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,24 +15,27 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
-export default function TermsConditions({ onClose }: TermsConditionsProps) {
+export default function TermsConditions() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-slate-50 overflow-y-auto"
+      className="min-h-screen bg-slate-50"
     >
       <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <motion.button
-          onClick={onClose}
+        <motion.div
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 mb-8 transition-colors"
         >
-          <ArrowLeft className="w-5 h-5" />
-          Back to Home
-        </motion.button>
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 mb-8 transition-colors inline-flex"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Back to Home
+          </Link>
+        </motion.div>
 
         <motion.div
           variants={containerVariants}
@@ -179,7 +179,9 @@ export default function TermsConditions({ onClose }: TermsConditionsProps) {
               <p className="text-slate-600">
                 If you have any questions about these Terms, please contact us at:
               </p>
-              <p className="text-emerald-600 font-medium mt-2">legal@atomik.security</p>
+              <a href="mailto:legal@atomik.sh" className="text-emerald-600 font-medium mt-2 inline-block hover:underline">
+                legal@atomik.sh
+              </a>
             </div>
           </motion.div>
         </motion.div>
@@ -187,4 +189,3 @@ export default function TermsConditions({ onClose }: TermsConditionsProps) {
     </motion.div>
   )
 }
-

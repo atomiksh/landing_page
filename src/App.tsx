@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import ProblemSolution from './components/ProblemSolution'
@@ -13,45 +13,46 @@ import ContactModal from './components/ContactModal'
 import TermsConditions from './components/TermsConditions'
 import RefundPolicy from './components/RefundPolicy'
 
+function HomePage({ onContactSalesClick }: { onContactSalesClick: () => void }) {
+  return (
+    <>
+      <Navigation onContactSalesClick={onContactSalesClick} />
+      <main>
+        <Hero />
+        <ProblemSolution />
+        <Features />
+        <ProductShowcase />
+        <Pricing />
+        <FAQ onContactClick={onContactSalesClick} />
+        <CTA />
+      </main>
+    </>
+  )
+}
+
 function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  const [showTerms, setShowTerms] = useState(false)
-  const [showRefund, setShowRefund] = useState(false)
 
   return (
-    <div className="min-h-screen">
-      <AnimatePresence>
-        {showTerms && (
-          <TermsConditions onClose={() => setShowTerms(false)} />
-        )}
-        {showRefund && (
-          <RefundPolicy onClose={() => setShowRefund(false)} />
-        )}
-      </AnimatePresence>
-
-      {!showTerms && !showRefund && (
-        <>
-          <Navigation onContactSalesClick={() => setIsContactModalOpen(true)} />
-          <main>
-            <Hero />
-            <ProblemSolution />
-            <Features />
-            <ProductShowcase />
-            <Pricing />
-            <FAQ />
-            <CTA />
-          </main>
-          <Footer 
-            onTermsClick={() => setShowTerms(true)}
-            onRefundClick={() => setShowRefund(true)}
+    <Router>
+      <div className="min-h-screen">
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              <HomePage onContactSalesClick={() => setIsContactModalOpen(true)} />
+            } 
           />
-          <ContactModal
-            isOpen={isContactModalOpen}
-            onClose={() => setIsContactModalOpen(false)}
-          />
-        </>
-      )}
-    </div>
+          <Route path="/terms" element={<TermsConditions />} />
+          <Route path="/refund" element={<RefundPolicy />} />
+        </Routes>
+        <Footer />
+        <ContactModal
+          isOpen={isContactModalOpen}
+          onClose={() => setIsContactModalOpen(false)}
+        />
+      </div>
+    </Router>
   )
 }
 
