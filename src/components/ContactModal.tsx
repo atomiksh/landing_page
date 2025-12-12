@@ -220,9 +220,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', duration: 0.5 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md max-h-[90vh] overflow-y-auto z-50 px-4 py-4"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+            <div className="w-full max-w-md max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200">
               {/* Header with gradient */}
               <div className="relative px-6 py-6 bg-gradient-to-br from-emerald-500 to-emerald-600 text-white">
                 <motion.div
