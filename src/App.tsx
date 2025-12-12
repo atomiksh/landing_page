@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import ProblemSolution from './components/ProblemSolution'
@@ -13,21 +13,64 @@ import ContactModal from './components/ContactModal'
 import TermsConditions from './components/TermsConditions'
 import RefundPolicy from './components/RefundPolicy'
 import PrivacyPolicy from './components/PrivacyPolicy'
+import { sanitizeHash } from './utils/sanitization'
+import { getSecurityConfig } from './config/security'
+import { logInvalidRoute } from './utils/monitoring'
+
+// Valid route paths
+const VALID_ROUTES = ['/', '/pricing', '/terms', '/refund', '/privacy']
+const VALID_HASH_ANCHORS = ['pricing', 'features', 'faq'] // Valid section IDs for hash navigation
 
 function HomePage({ onContactSalesClick }: { onContactSalesClick: () => void }) {
   const location = useLocation()
+  const navigate = useNavigate()
+  const config = getSecurityConfig()
 
   useEffect(() => {
-    // Handle hash-based scrolling
-    if (location.hash) {
-      const element = document.querySelector(location.hash)
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }, 100)
+    // Validate and sanitize route
+    if (config.enableRouteValidation) {
+      const currentPath = location.pathname
+      if (!VALID_ROUTES.includes(currentPath)) {
+        // Invalid route - redirect to home
+        logInvalidRoute(currentPath)
+        navigate('/', { replace: true })
+        return
       }
     }
-  }, [location])
+
+    // Handle hash-based scrolling with sanitization
+    if (location.hash) {
+      const hash = location.hash.substring(1) // Remove #
+      
+      if (config.enableHashSanitization) {
+        const sanitizedHash = sanitizeHash(hash)
+        
+        // Validate hash against allowed anchors
+        if (VALID_HASH_ANCHORS.includes(sanitizedHash)) {
+          // Use sanitized hash for querySelector to prevent XSS
+          const element = document.querySelector(`#${sanitizedHash}`)
+          if (element) {
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }, 100)
+          }
+        } else if (hash !== sanitizedHash) {
+          // Hash was modified by sanitization - remove invalid hash
+          navigate(location.pathname, { replace: true })
+        }
+      } else {
+        // Sanitization disabled - still validate against allowed anchors for safety
+        if (VALID_HASH_ANCHORS.includes(hash)) {
+          const element = document.querySelector(`#${hash}`)
+          if (element) {
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }, 100)
+          }
+        }
+      }
+    }
+  }, [location, navigate, config])
 
   return (
     <>

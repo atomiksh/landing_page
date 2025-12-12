@@ -1,6 +1,23 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Send, Loader2, MessageSquare, Mail, User, Sparkles, Building2 } from 'lucide-react'
+import { X, Send, Loader2, MessageSquare, Mail, User, Sparkles, Building2, AlertCircle } from 'lucide-react'
+import { validateFormData } from '../utils/validation'
+import { sanitizeName, sanitizeEmail, sanitizeCompany, sanitizeMessage } from '../utils/sanitization'
+import { generateCSRFToken, checkRateLimit, clearRateLimit } from '../utils/security'
+import { getSecurityConfig } from '../config/security'
+import { 
+  logHoneypotTrigger, 
+  logValidationFailure, 
+  logSanitization, 
+  logXSSAttempt,
+  trackFormSubmission 
+} from '../utils/monitoring'
+
+// Get max lengths from config
+const getMaxLengths = () => {
+  const config = getSecurityConfig()
+  return config.maxLengths
+}
 
 interface ContactModalProps {
   isOpen: boolean
@@ -8,45 +25,176 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const config = getSecurityConfig()
+  const maxLengths = getMaxLengths()
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     message: '',
+    honeypot: '', // Honeypot field for bot detection
   })
+  const [validationErrors, setValidationErrors] = useState<{
+    name?: string
+    email?: string
+    company?: string
+    message?: string
+  }>({})
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [csrfToken] = useState(() => generateCSRFToken())
   const formRef = useRef<HTMLFormElement>(null)
+
+  // Reset form when modal opens/closes
+  useEffect(() => {
+    if (isOpen) {
+      setFormData({ name: '', email: '', company: '', message: '', honeypot: '' })
+      setValidationErrors({})
+      setSubmitError(null)
+      setIsSubmitted(false)
+    }
+  }, [isOpen])
+
+  // Sanitize inputs on change
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
+    let sanitizedValue = value
+    const originalLength = value.length
+    
+    // Check for potential XSS attempts
+    if (config.enableSanitization && /<script|javascript:|on\w+\s*=/i.test(value)) {
+      logXSSAttempt(value, field)
+    }
+    
+    // Apply sanitization if enabled
+    if (config.enableSanitization) {
+      switch (field) {
+        case 'name':
+          sanitizedValue = sanitizeName(value)
+          break
+        case 'email':
+          sanitizedValue = sanitizeEmail(value)
+          break
+        case 'company':
+          sanitizedValue = sanitizeCompany(value)
+          break
+        case 'message':
+          sanitizedValue = sanitizeMessage(value)
+          break
+        case 'honeypot':
+          // Don't sanitize honeypot - we want to detect if it's filled
+          sanitizedValue = value
+          break
+      }
+      
+      // Log if sanitization modified the input
+      if (originalLength !== sanitizedValue.length) {
+        logSanitization(originalLength, sanitizedValue.length, field)
+      }
+    }
+    
+    setFormData({ ...formData, [field]: sanitizedValue })
+    // Clear error for this field when user starts typing
+    if (validationErrors[field as keyof typeof validationErrors]) {
+      setValidationErrors({ ...validationErrors, [field]: undefined })
+    }
+    setSubmitError(null)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/iriof@atomik.sh', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          message: formData.message,
-          _subject: `[Atomik Sales] New inquiry from ${formData.name}`,
-        })
+    const startTime = Date.now()
+    setSubmitError(null)
+    setValidationErrors({})
+
+    // Honeypot check - if filled, it's likely a bot
+    if (config.enableHoneypot && formData.honeypot) {
+      logHoneypotTrigger()
+      return // Silently fail
+    }
+
+    // Rate limiting check
+    const rateLimit = checkRateLimit()
+    if (!rateLimit.allowed) {
+      setSubmitError(
+        `Too many submissions. Please wait ${rateLimit.retryAfter} seconds before trying again.`
+      )
+      trackFormSubmission(false, Date.now() - startTime)
+      return
+    }
+
+    // Validate form data
+    if (config.enableValidation) {
+      const validation = validateFormData({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        message: formData.message,
       })
 
+      if (!validation.isValid) {
+        setValidationErrors(validation.errors)
+        // Log validation failures
+        Object.entries(validation.errors).forEach(([field, error]) => {
+          if (error) logValidationFailure(field, error)
+        })
+        trackFormSubmission(false, Date.now() - startTime)
+        return
+      }
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      // Sanitize data before sending (if enabled)
+      const sanitizedData = {
+        name: config.enableSanitization ? sanitizeName(formData.name) : formData.name,
+        email: config.enableSanitization ? sanitizeEmail(formData.email) : formData.email,
+        company: config.enableSanitization ? sanitizeCompany(formData.company) : formData.company,
+        message: config.enableSanitization ? sanitizeMessage(formData.message) : formData.message,
+        _subject: `[Atomik Sales] New inquiry from ${config.enableSanitization ? sanitizeName(formData.name) : formData.name}`,
+        ...(config.enableCSRF && csrfToken ? { _csrf: csrfToken } : {}), // CSRF token
+      }
+
+      const headers: HeadersInit = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+      
+      // Add CSRF header if enabled
+      if (config.enableCSRF && csrfToken) {
+        headers['X-CSRF-Token'] = csrfToken
+      }
+
+      const response = await fetch('https://formsubmit.co/ajax/iriof@atomik.sh', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(sanitizedData),
+      })
+
+      const duration = Date.now() - startTime
+
       if (response.ok) {
+        clearRateLimit() // Clear rate limit on success
+        trackFormSubmission(true, duration)
         setIsSubmitted(true)
         setTimeout(() => {
           setIsSubmitted(false)
-          setFormData({ name: '', email: '', company: '', message: '' })
+          setFormData({ name: '', email: '', company: '', message: '', honeypot: '' })
+          setValidationErrors({})
           onClose()
         }, 3000)
+      } else {
+        const errorText = await response.text()
+        setSubmitError('Failed to send message. Please try again later.')
+        trackFormSubmission(false, duration)
+        console.error('Form submission error:', response.status, errorText)
       }
     } catch (error) {
+      const duration = Date.now() - startTime
+      setSubmitError('Network error. Please check your connection and try again.')
+      trackFormSubmission(false, duration)
       console.error('Form submission error:', error)
     } finally {
       setIsSubmitting(false)
@@ -139,6 +287,30 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <input type="hidden" name="_captcha" value="false" />
                     <input type="hidden" name="_template" value="table" />
                     
+                    {/* Honeypot field - hidden from users but visible to bots */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={formData.honeypot}
+                      onChange={(e) => handleInputChange('honeypot', e.target.value)}
+                      style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                    />
+                    
+                    {/* Error message */}
+                    {submitError && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm"
+                      >
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>{submitError}</span>
+                      </motion.div>
+                    )}
+                    
                     <div className="grid grid-cols-2 gap-4">
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -157,14 +329,18 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           id="name"
                           name="name"
                           required
+                          maxLength={maxLengths.name}
                           value={formData.name}
-                          onChange={(e) =>
-                            setFormData({ ...formData, name: e.target.value })
-                          }
+                          onChange={(e) => handleInputChange('name', e.target.value)}
                           whileFocus={{ scale: 1.01 }}
-                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm"
+                          className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm ${
+                            validationErrors.name ? 'border-red-300' : 'border-slate-200'
+                          }`}
                           placeholder="Your name"
                         />
+                        {validationErrors.name && (
+                          <p className="mt-1 text-xs text-red-600">{validationErrors.name}</p>
+                        )}
                       </motion.div>
 
                       <motion.div
@@ -183,14 +359,18 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           type="text"
                           id="company"
                           name="company"
+                          maxLength={maxLengths.company}
                           value={formData.company}
-                          onChange={(e) =>
-                            setFormData({ ...formData, company: e.target.value })
-                          }
+                          onChange={(e) => handleInputChange('company', e.target.value)}
                           whileFocus={{ scale: 1.01 }}
-                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm"
+                          className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm ${
+                            validationErrors.company ? 'border-red-300' : 'border-slate-200'
+                          }`}
                           placeholder="Company name"
                         />
+                        {validationErrors.company && (
+                          <p className="mt-1 text-xs text-red-600">{validationErrors.company}</p>
+                        )}
                       </motion.div>
                     </div>
 
@@ -211,14 +391,18 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         id="email"
                         name="email"
                         required
+                        maxLength={maxLengths.email}
                         value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
+                        onChange={(e) => handleInputChange('email', e.target.value)}
                         whileFocus={{ scale: 1.01 }}
-                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm"
+                        className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm ${
+                          validationErrors.email ? 'border-red-300' : 'border-slate-200'
+                        }`}
                         placeholder="you@company.com"
                       />
+                      {validationErrors.email && (
+                        <p className="mt-1 text-xs text-red-600">{validationErrors.email}</p>
+                      )}
                     </motion.div>
 
                     <motion.div
@@ -238,14 +422,23 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         name="message"
                         required
                         rows={3}
+                        maxLength={maxLengths.message}
                         value={formData.message}
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
+                        onChange={(e) => handleInputChange('message', e.target.value)}
                         whileFocus={{ scale: 1.01 }}
-                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all resize-none text-sm"
+                        className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all resize-none text-sm ${
+                          validationErrors.message ? 'border-red-300' : 'border-slate-200'
+                        }`}
                         placeholder="Tell us about your team and requirements..."
                       />
+                      <div className="flex justify-between items-center mt-1">
+                        {validationErrors.message && (
+                          <p className="text-xs text-red-600">{validationErrors.message}</p>
+                        )}
+                        <p className="text-xs text-slate-400 ml-auto">
+                          {formData.message.length}/{maxLengths.message}
+                        </p>
+                      </div>
                     </motion.div>
 
                     <motion.button

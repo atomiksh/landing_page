@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "security:audit": "npm audit",
+    "security:audit:fix": "npm audit fix",
+    "security:check": "npm audit --audit-level=moderate",
+    "security:update": "npm update",
+    "security:outdated": "npm outdated"
   },
   "dependencies": {
     "framer-motion": "^10.16.16",
@@ -26,3 +31,4 @@
     "vite": "^5.0.10"
   }
 }
+

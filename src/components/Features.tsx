@@ -4,7 +4,6 @@ import {
   Users, 
   FolderPlus, 
   Shield,
-  Sparkles,
   Palette,
   FileText,
   Zap,

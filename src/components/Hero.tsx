@@ -166,7 +166,7 @@ export default function Hero() {
             variants={containerVariants}
             className="flex flex-wrap items-center justify-center gap-8 md:gap-12"
           >
-            {integrations.map((tool, index) => (
+            {integrations.map((tool) => (
               <motion.span
                 key={tool.name}
                 variants={itemVariants}
