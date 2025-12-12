@@ -31,7 +31,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <Logo className="h-12 md:h-14 w-auto" animate />
+            <Logo className="h-16 md:h-20 w-auto" animate />
           </motion.a>
 
           {/* Desktop Navigation */}
