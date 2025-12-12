@@ -58,7 +58,7 @@ export default function Footer() {
             
             {/* Polished X (Twitter) Social Link */}
             <motion.a
-              href="https://x.com/atomiksh"
+              href="https://x.com/atomik_io"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
@@ -82,7 +82,7 @@ export default function Footer() {
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-sm font-semibold text-emerald-200 group-hover:text-emerald-100 transition-colors">
-                  @atomiksh
+                  @atomik_io
                 </span>
                 <span className="text-xs text-emerald-400/60 group-hover:text-emerald-400/80 transition-colors">
                   Follow for updates

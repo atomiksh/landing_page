@@ -118,7 +118,7 @@ export default function Hero() {
           {/* Sub-headline */}
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-slate-500 font-normal max-w-3xl mx-auto mb-4 leading-relaxed"
+            className="text-base md:text-lg text-slate-500 font-normal max-w-3xl mx-auto mb-4 leading-relaxed"
           >
             Atomik automates your security report workflow — from vulnerability
             management to client-ready PDFs. Powered by AI. Built for pros.
