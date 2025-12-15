@@ -296,7 +296,7 @@ export default function Pricing() {
               </ul>
 
               <motion.a
-                href="https://app.atomik.sh"
+                href={plan.name === 'Community' ? 'https://app.atomik.sh' : 'https://app.atomik.sh/settings?tab=billing'}
                 whileHover={{ scale: 1.02, boxShadow: plan.ctaStyle === 'primary' ? '0 8px 25px rgba(16,185,129,0.25)' : undefined }}
                 whileTap={{ scale: 0.98 }}
                 className={`w-full py-3 px-4 rounded-xl font-semibold transition-all block text-center ${
