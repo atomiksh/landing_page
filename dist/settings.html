@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Atomik App...</title>
+    <script>
+        // Get query parameters from current URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const checkout = urlParams.get('checkout');
+        
+        // Build redirect URL
+        const redirectUrl = new URL('https://app.atomik.sh/settings');
+        if (checkout) {
+            redirectUrl.searchParams.set('checkout', checkout);
+        }
+        
+        // Preserve any other query parameters
+        urlParams.forEach((value, key) => {
+            if (key !== 'checkout') {
+                redirectUrl.searchParams.set(key, value);
+            }
+        });
+        
+        // Redirect immediately
+        window.location.href = redirectUrl.toString();
+    </script>
+    <!-- Fallback meta refresh for browsers with JS disabled -->
+    <meta http-equiv="refresh" content="0; url=https://app.atomik.sh/settings">
+</head>
+<body>
+    <p>Redirecting to Atomik App...</p>
+    <p>If you are not redirected automatically, <a href="https://app.atomik.sh/settings">click here</a>.</p>
+</body>
+</html>
+
