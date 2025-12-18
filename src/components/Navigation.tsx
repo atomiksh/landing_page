@@ -11,7 +11,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Features', href: '#features' },
+    { name: 'Security Whitepaper', href: '/security' },
     { name: 'Pricing', href: '#pricing' },
   ]
 

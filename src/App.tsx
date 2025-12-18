@@ -13,12 +13,13 @@ import ContactModal from './components/ContactModal'
 import TermsConditions from './components/TermsConditions'
 import RefundPolicy from './components/RefundPolicy'
 import PrivacyPolicy from './components/PrivacyPolicy'
+import Security from './components/Security'
 import { sanitizeHash } from './utils/sanitization'
 import { getSecurityConfig } from './config/security'
 import { logInvalidRoute } from './utils/monitoring'
 
 // Valid route paths
-const VALID_ROUTES = ['/', '/pricing', '/terms', '/refund', '/privacy']
+const VALID_ROUTES = ['/', '/pricing', '/terms', '/refund', '/privacy', '/security']
 const VALID_HASH_ANCHORS = ['pricing', 'features', 'faq'] // Valid section IDs for hash navigation
 
 function HomePage({ onContactSalesClick }: { onContactSalesClick: () => void }) {
@@ -110,6 +111,7 @@ function App() {
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/refund" element={<RefundPolicy />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/security" element={<Security />} />
         </Routes>
         <Footer />
         <ContactModal
