@@ -53,7 +53,7 @@ export default function Footer() {
               <Logo className="h-10 w-auto brightness-0 invert opacity-90" />
             </div>
             <p className="text-emerald-100/60 mb-6 max-w-xs leading-relaxed">
-              AI-powered penetration testing report automation. Ship reports faster, focus on what matters.
+              The modern alternative to Dradis and Plextrac. AI-powered penetration testing report automation.
             </p>
             
             {/* Polished X (Twitter) Social Link */}

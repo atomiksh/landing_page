@@ -22,6 +22,7 @@ export default function DashboardMockup() {
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
+      aria-label="Atomik Pentest Reporting Dashboard interface showing vulnerability findings"
     >
       {/* Glow effect behind the browser */}
       <motion.div 
