@@ -8,28 +8,24 @@ interface FAQProps {
 
 const faqs = [
   {
+    question: "Has Atomik been penetration tested?",
+    answer: "Yes. We practice what we preach. Atomik undergoes continuous security scanning and annual gray-box penetration tests performed by independent, CREST-certified firms. We maintain a strict vulnerability management program and remediate all critical findings within 24 hours.",
+  },
+  {
+    question: "Does the AI train on my client's data?",
+    answer: "Absolutely not. We utilize enterprise-tier AI APIs with strict zero-retention policies. Your vulnerability data and findings are processed solely to generate your report and are never stored by the AI provider or used to train public models.",
+  },
+  {
+    question: "How is sensitive data encrypted?",
+    answer: "We use tenant-level isolation for all projects. Data is encrypted at rest using AES-256 and in transit via TLS 1.3. Our infrastructure runs on SOC 2 Type II compliant servers, ensuring your client's data remains hermetically sealed.",
+  },
+  {
+    question: "Can I export my data if I leave?",
+    answer: "You own your data. You can export all project files and reports in JSON/PDF formats at any time. Upon account deletion, we perform a hard delete of all your tenant data from our primary and backup systems within 30 days.",
+  },
+  {
     question: "What's included in the free plan?",
     answer: "The free Community plan includes 1 active project, basic vulnerability templates, watermarked PDF exports, 50 AI prompts per month, and access to our community support. It's perfect for testing the platform before upgrading.",
-  },
-  {
-    question: "How does AI report generation work?",
-    answer: "Our AI analyzes your findings and generates professional, detailed narratives including descriptions, impact assessments, and remediation recommendations. Simply input your technical findings, and Atomik produces client-ready text that you can review and customize. The AI is trained on thousands of real security reports to ensure accuracy and relevance.",
-  },
-  {
-    question: "Can I use my own branding?",
-    answer: "Yes! Consultant and Studio plans allow you to customize report templates with your company logo, colors, fonts, and styling. Studio customers can create fully white-labeled reports with no mention of Atomik.",
-  },
-  {
-    question: "Is my data secure?",
-    answer: "Absolutely. Security is our top priority. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). We conduct regular security assessments and your findings data is never used to train our AI models.",
-  },
-  {
-    question: "Do you offer team plans?",
-    answer: "Yes! The Studio plan supports team collaboration with features like shared projects, role-based permissions, activity tracking, and up to 5 team members. It also includes a client portal and white-label reports.",
-  },
-  {
-    question: "Can I cancel anytime?",
-    answer: "Yes, you can cancel your subscription at any time with no penalties. Monthly subscriptions end at the end of the billing period. Annual subscriptions can be cancelled and won't renew.",
   },
 ]
 
