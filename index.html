@@ -84,6 +84,27 @@
     </script>
   </head>
   <body>
+    <!-- Visible HTML for search engines (hidden after React hydration) -->
+    <div id="seo-content" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
+      <h1>The AI-Powered Pentest Reporting Tool.</h1>
+      <p>Atomik is the automated pentest reporting software that turns vulnerability data into professional PDFs. Powered by AI. Built for pros. Reports in minutes, not days.</p>
+      <p>Automate your pentest reporting workflow. Import data from Burp Suite & Nessus, generate OWASP-compliant findings with AI, and ship client-ready PDFs in minutes.</p>
+      <p>Seamlessly imports from Burp Suite, Nessus, Qualys, and OpenVAS.</p>
+    </div>
+    
+    <noscript>
+      <style>
+        #seo-content { position: static; width: auto; height: auto; overflow: visible; padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        #root { display: none; }
+      </style>
+      <div id="seo-content">
+        <h1>The AI-Powered Pentest Reporting Tool.</h1>
+        <p>Atomik is the automated pentest reporting software that turns vulnerability data into professional PDFs. Powered by AI. Built for pros. Reports in minutes, not days.</p>
+        <p>Automate your pentest reporting workflow. Import data from Burp Suite & Nessus, generate OWASP-compliant findings with AI, and ship client-ready PDFs in minutes.</p>
+        <p>Seamlessly imports from Burp Suite, Nessus, Qualys, and OpenVAS.</p>
+      </div>
+    </noscript>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
