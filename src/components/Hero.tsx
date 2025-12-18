@@ -98,7 +98,8 @@ export default function Hero() {
             variants={itemVariants}
             className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter text-slate-900 mb-6"
           >
-            Pentest Reports in{' '}
+            The AI-Powered Pentest Reporting Tool.{' '}
+            <br className="hidden sm:block" />
             <motion.span
               className="text-gradient inline-block"
               animate={{ 
@@ -109,10 +110,8 @@ export default function Hero() {
                 backgroundSize: '200% 200%',
               }}
             >
-              Minutes
-            </motion.span>.{' '}
-            <br className="hidden sm:block" />
-            Not Days.
+              Reports
+            </motion.span> in Minutes, Not Days.
           </motion.h1>
 
           {/* Sub-headline */}
@@ -120,8 +119,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-base md:text-lg text-slate-500 font-normal max-w-3xl mx-auto mb-4 leading-relaxed"
           >
-            Atomik automates your security report workflow — from vulnerability
-            management to client-ready PDFs. Powered by AI. Built for pros.
+            Atomik is the automated pentest reporting software that turns vulnerability data into professional PDFs. Powered by AI. Built for pros.
           </motion.p>
 
           {/* Value proposition */}
@@ -158,7 +156,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-xs md:text-sm text-slate-400 uppercase tracking-[0.2em] font-medium mb-8"
           >
-            Seamlessly imports from industry-standard tools
+            Seamlessly imports from industry-standard tools: Burp Suite, Nessus, Qualys, and OpenVAS
           </motion.p>
 
           {/* Integration logos - Gray minimal style */}
