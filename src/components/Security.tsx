@@ -71,7 +71,7 @@ export default function Security() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gradient-to-b from-slate-50 to-white"
+      className="min-h-screen bg-zinc-950 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
     >
       {/* Subtle background animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -81,7 +81,7 @@ export default function Security() {
             opacity: [0.1, 0.15, 0.1],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-0 right-0 w-96 h-96 rounded-full bg-emerald-200/30 blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 rounded-full bg-lime-400/10 blur-3xl"
         />
         <motion.div
           animate={{
@@ -89,7 +89,7 @@ export default function Security() {
             opacity: [0.1, 0.15, 0.1],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-teal-200/30 blur-3xl"
+          className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-lime-500/10 blur-3xl"
         />
       </div>
 
@@ -100,7 +100,7 @@ export default function Security() {
         >
           <Link
             to="/"
-            className="flex items-center gap-2 text-slate-600 hover:text-emerald-600 mb-8 transition-colors inline-flex"
+            className="flex items-center gap-2 text-zinc-400 hover:text-lime-400 mb-8 transition-colors inline-flex"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
@@ -113,19 +113,23 @@ export default function Security() {
           animate="visible"
         >
           {/* Header Section */}
-          <motion.div variants={itemVariants} className="mb-12 text-center">
+          <motion.div 
+            variants={itemVariants} 
+            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <motion.div
               className="flex items-center justify-center gap-3 mb-6"
               animate={iconPulse}
             >
-              <div className="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
-                <Shield className="w-8 h-8 text-emerald-600" />
-              </div>
+              <Shield className="w-12 h-12 text-lime-400" />
             </motion.div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Security at Atomik
             </h1>
-            <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
               We believe in radical transparency. Here is how we secure your client data.
             </p>
           </motion.div>
@@ -138,27 +142,31 @@ export default function Security() {
                 <motion.div
                   key={guarantee.title}
                   variants={itemVariants}
-                  className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow cursor-default"
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                  custom={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    ease: 'easeOut',
+                    delay: 0.3 + (index * 0.1)
+                  }}
+                  className="bg-zinc-900/40 backdrop-blur-sm rounded-2xl border border-zinc-800 p-6 cursor-default transition-all duration-300 hover:border-lime-400/50 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] hover:-translate-y-1"
                 >
                   <motion.div
                     className="flex items-start gap-4"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
                   >
                     <motion.div
                       animate={iconPulse}
-                      className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0"
+                      className="flex items-center justify-center flex-shrink-0"
                     >
-                      <IconComponent className="w-6 h-6 text-emerald-600" />
+                      <IconComponent className="w-8 h-8 text-lime-400" />
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-slate-800 mb-2">
+                      <h3 className="text-xl font-semibold text-white mb-2">
                         {guarantee.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-zinc-400 leading-relaxed">
                         {guarantee.description}
                       </p>
                     </div>
@@ -172,20 +180,20 @@ export default function Security() {
           <motion.div
             variants={itemVariants}
             className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.5 }}
           >
             <motion.a
               href="/atomik-security-whitepaper.pdf"
               download="Atomik Security & Trust Document.pdf"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 0.4 }}
               whileHover={{
                 scale: 1.05,
                 boxShadow: '0 0 60px rgba(132,204,22,0.5)',
                 transition: { duration: 0.2 },
               }}
-              whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-zinc-950 bg-lime-400 rounded-lg hover:bg-lime-300 transition-all duration-300 shadow-lg shadow-lime-400/30 hover:shadow-xl hover:shadow-lime-400/40"
+              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center justify-center px-10 py-4 text-base font-bold text-zinc-950 bg-lime-400 rounded-lg hover:bg-lime-300 transition-all duration-300 shadow-lg shadow-lime-400/30 hover:shadow-xl hover:shadow-lime-400/40"
             >
               Download Full Security Architecture (PDF)
               <motion.span
