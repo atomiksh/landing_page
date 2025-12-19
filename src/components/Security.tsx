@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Shield, Lock, Key, FileText, ShieldCheck, Server } from 'lucide-react'
+import { ArrowRight, Shield, Lock, Key, FileText, ShieldCheck, Server } from 'lucide-react'
+import Navigation from './Navigation'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -73,6 +73,16 @@ export default function Security() {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-zinc-950 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"
     >
+      {/* Global Navigation - Transparent */}
+      <style>{`
+        .security-page-nav nav {
+          background: transparent !important;
+          border-bottom: none !important;
+        }
+      `}</style>
+      <div className="security-page-nav fixed top-0 left-0 right-0 z-50">
+        <Navigation onContactSalesClick={() => {}} />
+      </div>
       {/* Subtle background animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -93,43 +103,33 @@ export default function Security() {
         />
       </div>
 
-      <div className="relative max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <motion.div
-          whileHover={{ x: -5 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Link
-            to="/"
-            className="flex items-center gap-2 text-zinc-400 hover:text-lime-400 mb-8 transition-colors inline-flex"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Back to Home
-          </Link>
-        </motion.div>
-
+      <div className="relative max-w-4xl mx-auto px-4 pt-32 pb-12 sm:px-6 lg:px-8 z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Header Section */}
+          {/* Header Section with Ambient Lighting */}
           <motion.div 
             variants={itemVariants} 
-            className="mb-12 text-center"
+            className="mb-12 text-center relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            {/* Radioactive Ambient Glow Behind Title */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-lime-500 opacity-10 blur-[120px] rounded-full pointer-events-none" />
+            
             <motion.div
-              className="flex items-center justify-center gap-3 mb-6"
+              className="flex items-center justify-center gap-3 mb-6 relative z-10"
               animate={iconPulse}
             >
               <Shield className="w-12 h-12 text-lime-400" />
             </motion.div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 relative z-10">
               Security at Atomik
             </h1>
-            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed relative z-10">
               We believe in radical transparency. Here is how we secure your client data.
             </p>
           </motion.div>
@@ -149,7 +149,7 @@ export default function Security() {
                     ease: 'easeOut',
                     delay: 0.3 + (index * 0.1)
                   }}
-                  className="bg-zinc-900/40 backdrop-blur-sm rounded-2xl border border-zinc-800 p-6 cursor-default transition-all duration-300 hover:border-lime-400/50 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] hover:-translate-y-1"
+                  className="group bg-zinc-900/40 backdrop-blur-sm rounded-2xl border border-zinc-800 p-6 cursor-default transition-all duration-300 hover:border-lime-500/50 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] hover:shadow-[inset_0_0_20px_rgba(132,204,22,0.1)] hover:-translate-y-1"
                 >
                   <motion.div
                     className="flex items-start gap-4"
@@ -160,7 +160,7 @@ export default function Security() {
                       animate={iconPulse}
                       className="flex items-center justify-center flex-shrink-0"
                     >
-                      <IconComponent className="w-8 h-8 text-lime-400" />
+                      <IconComponent className="w-8 h-8 text-lime-400 group-hover:text-lime-300 group-hover:scale-110 transition-all duration-300" />
                     </motion.div>
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-white mb-2">
