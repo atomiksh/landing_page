@@ -174,8 +174,10 @@ const itemVariants = {
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 md:py-32 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-24 md:py-32 bg-white overflow-hidden relative">
+      {/* Clean transition from dark Hero */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-zinc-950 to-white pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -198,10 +200,10 @@ export default function Features() {
             </motion.div>
             <span className="text-sm font-medium text-slate-600">Powerful Features</span>
           </motion.div>
-          <h2 className="section-title mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">
             Everything You Need to<br />Ship Reports Faster
           </h2>
-          <p className="section-subtitle">
+          <p className="text-lg md:text-xl text-zinc-600 max-w-2xl mx-auto">
             Built by pentesters, for pentesters. Focus on testing, not paperwork.
           </p>
         </motion.div>
@@ -222,7 +224,7 @@ export default function Features() {
                 y: -10,
                 transition: { type: 'spring', stiffness: 400 }
               }}
-              className={`group relative bg-white rounded-2xl border border-slate-200 p-6 cursor-pointer overflow-hidden hover:border-slate-300 hover:shadow-lg transition-all duration-300 ${
+              className={`group relative bg-white rounded-2xl border border-zinc-200 p-6 cursor-pointer overflow-hidden hover:border-zinc-300 hover:shadow-sm transition-all duration-300 ${
                 feature.size === 'large' ? 'lg:col-span-2' : ''
               }`}
             >
@@ -236,17 +238,17 @@ export default function Features() {
               
               <div className="relative">
                 <motion.div 
-                  className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center mb-4"
+                  className="w-12 h-12 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-center mb-4"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <feature.icon className="w-6 h-6 text-slate-600" />
+                  <feature.icon className="w-6 h-6 text-zinc-700" />
                 </motion.div>
                 
-                <h3 className="text-xl font-semibold text-slate-800 mb-2 group-hover:text-slate-900 transition-colors">
+                <h3 className="text-xl font-semibold text-zinc-900 mb-2 group-hover:text-zinc-950 transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed">
+                <p className="text-zinc-600 leading-relaxed">
                   {feature.description}
                 </p>
                 

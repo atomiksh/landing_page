@@ -49,8 +49,8 @@ export default function ProductShowcase() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title mb-4">See Atomik in Action</h2>
-          <p className="section-subtitle">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">See Atomik in Action</h2>
+          <p className="text-lg md:text-xl text-zinc-600 max-w-2xl mx-auto">
             Explore how Atomik streamlines every step of your security reporting workflow
           </p>
         </motion.div>
@@ -282,6 +282,8 @@ function CollaborateMockup() {
     </div>
   )
 }
+
+
 
 
 

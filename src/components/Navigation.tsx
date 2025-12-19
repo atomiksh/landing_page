@@ -20,7 +20,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 glassmorphism"
+      className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800/50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 md:h-28">
@@ -44,11 +44,11 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
                 whileHover={{ y: -2 }}
-                className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors relative group"
+                className="text-sm font-medium text-zinc-200 hover:text-white transition-colors relative group"
               >
                 {link.name}
                 <motion.span 
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 group-hover:w-full transition-all duration-300" 
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-400 group-hover:w-full transition-all duration-300" 
                   layoutId={`underline-${link.name}`}
                 />
               </motion.a>
@@ -59,10 +59,10 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               whileHover={{ y: -2 }}
-              className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors relative group"
+              className="text-sm font-medium text-zinc-200 hover:text-white transition-colors relative group"
             >
               Contact Sales
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-400 group-hover:w-full transition-all duration-300" />
             </motion.button>
           </div>
 
@@ -75,7 +75,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
               transition={{ delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-ghost text-sm"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-zinc-200 rounded-lg hover:bg-zinc-800/50 transition-all duration-200 text-sm"
             >
               Sign In
             </motion.a>
@@ -84,9 +84,9 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 }}
-              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(16,185,129,0.3)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(99,102,241,0.4)' }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary text-sm group"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-indigo-500 rounded-lg hover:bg-indigo-400 transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/50 text-sm group"
             >
               Sign Up
               <motion.span
@@ -100,7 +100,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-zinc-800 transition-colors text-zinc-200"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -140,7 +140,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-slate-200 overflow-hidden"
+            className="md:hidden bg-zinc-900 border-t border-zinc-800 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-2">
               {navLinks.map((link, index) => (
@@ -150,7 +150,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="block text-base font-medium text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg px-4 py-3 transition-all"
+                  className="block text-base font-medium text-zinc-200 hover:text-indigo-400 hover:bg-zinc-800 rounded-lg px-4 py-3 transition-all"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
@@ -164,7 +164,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
-                className="block w-full text-left text-base font-medium text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg px-4 py-3 transition-all"
+                className="block w-full text-left text-base font-medium text-zinc-200 hover:text-indigo-400 hover:bg-zinc-800 rounded-lg px-4 py-3 transition-all"
               >
                 Contact Sales
               </motion.button>
@@ -172,12 +172,12 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="pt-4 space-y-3 border-t border-slate-200"
+                className="pt-4 space-y-3 border-t border-zinc-800"
               >
-                <a href="https://app.atomik.sh" className="block btn-ghost w-full text-center">
+                <a href="https://app.atomik.sh" className="block w-full text-center px-6 py-3 text-sm font-semibold text-zinc-200 rounded-lg hover:bg-zinc-800/50 transition-all duration-200">
                   Sign In
                 </a>
-                <a href="https://app.atomik.sh" className="block btn-primary w-full text-center">
+                <a href="https://app.atomik.sh" className="block w-full text-center px-6 py-3 text-sm font-semibold text-white bg-indigo-500 rounded-lg hover:bg-indigo-400 transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/50">
                   Sign Up →
                 </a>
               </motion.div>

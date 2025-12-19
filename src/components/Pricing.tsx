@@ -140,8 +140,8 @@ export default function Pricing() {
             <Crown className="w-4 h-4 text-emerald-500" />
             <span className="text-sm font-medium text-slate-600">Simple Pricing</span>
           </motion.div>
-          <h2 className="section-title mb-4">Choose Your Plan</h2>
-          <p className="section-subtitle mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">Choose Your Plan</h2>
+          <p className="text-lg md:text-xl text-zinc-600 max-w-2xl mx-auto mb-8">
             Start free. Upgrade when you're ready. Cancel anytime.
           </p>
 
@@ -224,8 +224,8 @@ export default function Pricing() {
               )}
 
               <div className="mb-4">
-                <h3 className="text-xl font-bold text-slate-800">{plan.name}</h3>
-                <p className="text-sm text-slate-500">{plan.description}</p>
+                <h3 className="text-xl font-bold text-zinc-900">{plan.name}</h3>
+                <p className="text-sm text-zinc-600">{plan.description}</p>
               </div>
 
               <div className="mb-4">
@@ -237,10 +237,10 @@ export default function Pricing() {
                     exit={{ opacity: 0, y: 10 }}
                     className="flex items-baseline gap-1"
                   >
-                    <span className="text-4xl font-bold text-slate-900">
+                    <span className="text-4xl font-bold text-zinc-900">
                       {isYearly ? plan.priceYearly : plan.priceMonthly}
                     </span>
-                    <span className="text-slate-500 text-sm">
+                    <span className="text-zinc-600 text-sm">
                       {isYearly ? '/year' : '/month'}
                     </span>
                   </motion.div>
@@ -290,7 +290,7 @@ export default function Pricing() {
                     <Check className={`w-5 h-5 flex-shrink-0 ${
                       plan.highlighted ? 'text-emerald-500' : 'text-slate-400'
                     }`} />
-                    <span className="text-slate-600 text-sm">{feature}</span>
+                    <span className="text-zinc-700 text-sm">{feature}</span>
                   </motion.li>
                 ))}
               </ul>
@@ -301,8 +301,8 @@ export default function Pricing() {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full py-3 px-4 rounded-xl font-semibold transition-all block text-center ${
                   plan.ctaStyle === 'primary'
-                    ? 'bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg shadow-emerald-500/20'
-                    : 'bg-slate-100 text-slate-500 hover:bg-slate-200 border border-slate-200'
+                    ? 'bg-indigo-500 text-white hover:bg-indigo-400 shadow-lg shadow-indigo-500/30'
+                    : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 border border-zinc-200'
                 }`}
               >
                 {plan.cta}
@@ -317,7 +317,7 @@ export default function Pricing() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-center text-sm text-slate-500 mt-12"
+          className="text-center text-sm text-zinc-600 mt-12"
         >
           Start with the free Community plan. Upgrade anytime.
         </motion.p>

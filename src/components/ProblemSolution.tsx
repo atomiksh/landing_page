@@ -72,10 +72,10 @@ export default function ProblemSolution() {
             <Sparkles className="w-4 h-4 text-emerald-500" />
             <span className="text-sm font-medium text-slate-600">Transform Your Workflow</span>
           </motion.div>
-          <h2 className="section-title mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">
             Stop Wasting Time on Reports
           </h2>
-          <p className="section-subtitle">
+          <p className="text-lg md:text-xl text-zinc-600 max-w-2xl mx-auto">
             See how Atomik transforms your security reporting workflow
           </p>
         </motion.div>

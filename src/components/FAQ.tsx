@@ -65,7 +65,7 @@ export default function FAQ({ onContactClick }: FAQProps) {
             <HelpCircle className="w-4 h-4 text-emerald-500" />
             <span className="text-sm font-medium text-slate-600">Got Questions?</span>
           </motion.div>
-          <h2 className="section-title mb-4">Frequently Asked Questions</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">Frequently Asked Questions</h2>
           <p className="section-subtitle">
             Everything you need to know about Atomik
           </p>

@@ -106,7 +106,7 @@ export default function Testimonials() {
               </motion.div>
             ))}
           </motion.div>
-          <h2 className="section-title mb-4">Loved by Security Professionals</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">Loved by Security Professionals</h2>
           <p className="section-subtitle">
             Join thousands of pentesters who've transformed their reporting workflow
           </p>

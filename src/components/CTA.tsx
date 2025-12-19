@@ -109,9 +109,9 @@ export default function CTA() {
           >
             <motion.a
               href="https://app.atomik.sh"
-              whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(0,0,0,0.2)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(99,102,241,0.4)' }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center justify-center px-10 py-4 bg-white text-emerald-600 font-semibold rounded-lg shadow-xl transition-all duration-200"
+              className="group inline-flex items-center justify-center px-10 py-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-xl shadow-indigo-500/50 hover:bg-indigo-400 hover:shadow-2xl hover:shadow-indigo-500/60 transition-all duration-200"
             >
               <Sparkles className="mr-2 h-5 w-5" />
               Get Started Free
