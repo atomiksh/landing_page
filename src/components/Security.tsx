@@ -181,11 +181,11 @@ export default function Security() {
               transition={{ delay: 0.8, duration: 0.4 }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: '0 0 60px rgba(99,102,241,0.5)',
+                boxShadow: '0 0 60px rgba(132,204,22,0.5)',
                 transition: { duration: 0.2 },
               }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-white bg-indigo-500 rounded-lg hover:bg-indigo-400 transition-all duration-300 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40"
+              className="group inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-zinc-950 bg-lime-400 rounded-lg hover:bg-lime-300 transition-all duration-300 shadow-lg shadow-lime-400/30 hover:shadow-xl hover:shadow-lime-400/40"
             >
               Download Full Security Architecture (PDF)
               <motion.span

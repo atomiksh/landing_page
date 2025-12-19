@@ -333,7 +333,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           value={formData.name}
                           onChange={(e) => handleInputChange('name', e.target.value)}
                           whileFocus={{ scale: 1.01 }}
-                          className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm ${
+                          className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-lime-400 focus:border-lime-400 focus:bg-white outline-none transition-all text-sm ${
                             validationErrors.name ? 'border-red-300' : 'border-slate-200'
                           }`}
                           placeholder="Your name"
@@ -363,7 +363,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                           value={formData.company}
                           onChange={(e) => handleInputChange('company', e.target.value)}
                           whileFocus={{ scale: 1.01 }}
-                          className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all text-sm ${
+                          className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-lime-400 focus:border-lime-400 focus:bg-white outline-none transition-all text-sm ${
                             validationErrors.company ? 'border-red-300' : 'border-slate-200'
                           }`}
                           placeholder="Company name"
@@ -426,7 +426,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         value={formData.message}
                         onChange={(e) => handleInputChange('message', e.target.value)}
                         whileFocus={{ scale: 1.01 }}
-                        className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white outline-none transition-all resize-none text-sm ${
+                        className={`w-full px-4 py-3 bg-slate-50 border rounded-xl focus:ring-2 focus:ring-lime-400 focus:border-lime-400 focus:bg-white outline-none transition-all resize-none text-sm ${
                           validationErrors.message ? 'border-red-300' : 'border-slate-200'
                         }`}
                         placeholder="Tell us about your team and requirements..."
@@ -449,7 +449,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       transition={{ delay: 0.4 }}
                       whileHover={{ scale: 1.02, boxShadow: '0 10px 30px rgba(16,185,129,0.3)' }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-3.5 px-4 bg-emerald-500 text-white font-semibold rounded-xl hover:bg-emerald-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
+                      className="w-full py-3.5 px-4 bg-lime-400 text-zinc-950 font-semibold rounded-xl hover:bg-lime-300 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-lime-400/20"
                     >
                       {isSubmitting ? (
                         <>
@@ -477,9 +477,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 >
                   <p className="text-xs text-slate-400 text-center">
                     By submitting, you agree to our{' '}
-                    <a href="/#/privacy" className="text-emerald-600 hover:underline">Privacy Policy</a>
+                    <a href="/#/privacy" className="text-lime-400 hover:underline">Privacy Policy</a>
                     {' '}and{' '}
-                    <a href="/#/terms" className="text-emerald-600 hover:underline">Terms of Service</a>
+                    <a href="/#/terms" className="text-lime-400 hover:underline">Terms of Service</a>
                   </p>
                 </motion.div>
               )}

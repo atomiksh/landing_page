@@ -40,8 +40,8 @@
   }
   
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-indigo-500 rounded-lg 
-           hover:bg-indigo-400 transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/50 hover:scale-[1.02] active:scale-[0.98];
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-zinc-950 bg-lime-400 rounded-lg 
+           hover:bg-lime-300 transition-all duration-200 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-[1.02] active:scale-[0.98];
   }
   
   .btn-secondary {
@@ -117,10 +117,10 @@
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 20px rgba(132, 204, 22, 0.4);
   }
   50% {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+    box-shadow: 0 0 40px rgba(132, 204, 22, 0.6);
   }
 }
 
