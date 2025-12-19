@@ -44,33 +44,73 @@
             -webkit-backdrop-filter: blur(4px);
         }
         .glass-card:hover {
-            border-color: rgba(163, 230, 53, 0.5);
-            box-shadow: 0 0 15px rgba(163, 230, 53, 0.1);
+            border-color: rgba(132, 204, 22, 0.5);
+            box-shadow: 0 0 15px rgba(163, 230, 53, 0.1), inset 0 0 20px rgba(132, 204, 22, 0.1);
             transform: translateY(-4px);
+        }
+        .glass-card:hover svg {
+            color: rgb(190, 242, 100);
+            transform: scale(1.1);
+        }
+        .glass-card svg {
+            transition: all 0.3s ease;
+        }
+        .nav-transparent {
+            background: transparent !important;
+            border-bottom: none !important;
+        }
+        .ambient-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background: rgb(132, 204, 22);
+            opacity: 0.1;
+            filter: blur(120px);
+            border-radius: 50%;
+            pointer-events: none;
         }
     </style>
 </head>
 <body class="bg-zinc-950 text-white antialiased" style="background-image: linear-gradient(to right, rgba(128, 128, 128, 0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(128, 128, 128, 0.07) 1px, transparent 1px); background-size: 24px 24px;">
-    <div class="min-h-screen">
-        <div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-            <a href="/" class="flex items-center gap-2 text-zinc-400 hover:text-lime-400 mb-8 transition-colors inline-flex">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
-                Back to Home
-            </a>
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 md:h-28">
+                <a href="/" class="flex items-center gap-2">
+                    <svg class="h-16 md:h-20 w-auto" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#FFFFFF" d="M760.482 239.091C770.513 238.879 781.114 239.058 791.188 239.065L791.239 368.494C781.65 368.364 769.974 368.25 760.483 368.683L760.482 239.091Z"/>
+                        <path fill="#84cc16" d="M640.799 281.186C649.92 280.997 664.764 281.933 673.512 280.999C674.39 281.272 676.335 281.678 676.351 282.348C676.901 305.562 676.471 346.731 676.478 368.823L640.966 368.712L640.89 334.015C640.899 330.377 640.682 321.669 641.005 318.341C640.544 306.96 640.84 292.774 640.799 281.186Z"/>
+                        <path fill="#84cc16" d="M640.799 281.186C649.92 280.997 664.764 281.933 673.512 280.999C671.794 296.331 650.791 334.02 641.434 346.841C641.265 343.061 641.631 319.487 641.005 318.341C640.544 306.96 640.84 292.774 640.799 281.186Z"/>
+                        <path fill="#84cc16" d="M584.922 317.29L620.307 317.349C620.581 334.255 620.349 351.818 620.363 368.778L584.867 368.726L584.922 317.29Z"/>
+                    </svg>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/security" class="text-sm font-medium text-zinc-200 hover:text-white transition-colors">Security Whitepaper</a>
+                    <a href="#pricing" class="text-sm font-medium text-zinc-200 hover:text-white transition-colors">Pricing</a>
+                    <a href="https://app.atomik.sh" class="text-sm font-semibold text-zinc-200 hover:text-white transition-colors px-6 py-3 rounded-lg hover:bg-zinc-800/50">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-            <!-- Header Section -->
-            <div class="mb-12 text-center">
-                <div class="flex items-center justify-center mb-6">
+    <div class="min-h-screen">
+        <div class="relative max-w-4xl mx-auto px-4 pt-32 pb-12 sm:px-6 lg:px-8 z-10">
+            <!-- Header Section with Ambient Lighting -->
+            <div class="mb-12 text-center relative">
+                <!-- Radioactive Ambient Glow Behind Title -->
+                <div class="ambient-glow"></div>
+                <div class="flex items-center justify-center mb-6 relative z-10">
                     <svg class="w-12 h-12 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                     </svg>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 relative z-10">
                     Security at Atomik
                 </h1>
-                <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+                <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed relative z-10">
                     We believe in radical transparency. Here is how we secure your client data.
                 </p>
             </div>
