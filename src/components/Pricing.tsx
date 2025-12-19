@@ -206,7 +206,7 @@ export default function Pricing() {
               }}
               className={`relative bg-white rounded-2xl p-6 ${
                 plan.highlighted
-                  ? 'border-2 border-lime-400/20 shadow-xl shadow-lime-400/10'
+                  ? 'border-2 border-emerald-500/20 shadow-xl shadow-emerald-500/10'
                   : 'border border-slate-200 shadow-lg'
               }`}
             >
@@ -301,7 +301,7 @@ export default function Pricing() {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full py-3 px-4 rounded-xl font-semibold transition-all block text-center ${
                   plan.ctaStyle === 'primary'
-                    ? 'bg-lime-400 text-zinc-950 hover:bg-lime-300 shadow-lg shadow-lime-400/30'
+                    ? 'bg-emerald-500 text-white hover:bg-emerald-400 shadow-lg shadow-emerald-500/30'
                     : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 border border-zinc-200'
                 }`}
               >

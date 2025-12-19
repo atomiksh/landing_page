@@ -63,7 +63,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-lime-400/50 transition-all duration-300 backdrop-blur-sm"
+              className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-emerald-400/50 transition-all duration-300 backdrop-blur-sm"
             >
               {/* X (Twitter) Icon with glow effect */}
               <motion.div
@@ -73,12 +73,12 @@ export default function Footer() {
               >
                 <svg 
                   viewBox="0 0 24 24" 
-                  className="w-5 h-5 fill-lime-400 group-hover:fill-lime-300 transition-colors"
+                  className="w-5 h-5 fill-emerald-400 group-hover:fill-emerald-300 transition-colors"
                   aria-hidden="true"
                 >
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
-                <div className="absolute inset-0 bg-lime-400/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-emerald-400/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-sm font-semibold text-zinc-200 group-hover:text-white transition-colors">
@@ -93,7 +93,7 @@ export default function Footer() {
                 animate={{ x: [0, 3, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <svg className="w-4 h-4 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </motion.div>

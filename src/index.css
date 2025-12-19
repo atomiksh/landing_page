@@ -30,9 +30,8 @@
   }
   
   .gradient-cta {
-    background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
+    background: #09090b;
     background-size: 200% 200%;
-    animation: gradient 8s ease infinite;
   }
   
   .glassmorphism {
@@ -40,8 +39,8 @@
   }
   
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-zinc-950 bg-lime-400 rounded-lg 
-           hover:bg-lime-300 transition-all duration-200 hover:shadow-lg hover:shadow-lime-400/50 hover:scale-[1.02] active:scale-[0.98];
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-emerald-500 rounded-lg 
+           hover:bg-emerald-400 transition-all duration-200 hover:shadow-lg hover:shadow-emerald-500/50 hover:scale-[1.02] active:scale-[0.98];
   }
   
   .btn-secondary {
@@ -117,10 +116,10 @@
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(132, 204, 22, 0.4);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
   }
   50% {
-    box-shadow: 0 0 40px rgba(132, 204, 22, 0.6);
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
   }
 }
 

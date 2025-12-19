@@ -3,15 +3,18 @@ import { ArrowRight, Rocket, Sparkles } from 'lucide-react'
 
 export default function CTA() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
-      {/* Animated background gradient */}
+    <section className="py-24 md:py-32 relative overflow-hidden bg-zinc-950">
+      {/* Animated background decorations */}
       <motion.div 
-        className="absolute inset-0 gradient-cta"
+        className="absolute inset-0"
         animate={{
-          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+          opacity: [0.1, 0.15, 0.1],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-      />
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl" />
+      </motion.div>
       
       {/* Decorative animated elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -22,7 +25,7 @@ export default function CTA() {
             x: [0, 50, 0],
           }}
           transition={{ duration: 8, repeat: Infinity }}
-          className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -31,14 +34,14 @@ export default function CTA() {
             x: [0, -50, 0],
           }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
         />
         
         {/* Floating particles */}
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-white/30 rounded-full"
+            className="absolute w-2 h-2 bg-emerald-400/30 rounded-full"
             style={{
               left: `${20 + i * 15}%`,
               top: `${30 + (i % 3) * 20}%`,
@@ -68,15 +71,15 @@ export default function CTA() {
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 mb-8"
           >
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
             >
-              <Rocket className="w-4 h-4 text-white" />
+              <Rocket className="w-4 h-4 text-emerald-400" />
             </motion.div>
-            <span className="text-sm font-medium text-white">Ready to Get Started?</span>
+            <span className="text-sm font-medium text-zinc-200">Ready to Get Started?</span>
           </motion.div>
 
           <motion.h2 
@@ -90,7 +93,7 @@ export default function CTA() {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-emerald-100 mb-10 max-w-2xl mx-auto"
+            className="text-xl text-zinc-300 mb-10 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -109,9 +112,9 @@ export default function CTA() {
           >
             <motion.a
               href="https://app.atomik.sh"
-              whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(132,204,22,0.4)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(16,185,129,0.4)' }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center justify-center px-10 py-4 bg-lime-400 text-zinc-950 font-semibold rounded-lg shadow-xl shadow-lime-400/50 hover:bg-lime-300 hover:shadow-2xl hover:shadow-lime-400/60 transition-all duration-200"
+              className="group inline-flex items-center justify-center px-10 py-4 bg-emerald-500 text-white font-semibold rounded-lg shadow-xl shadow-emerald-500/50 hover:bg-emerald-400 hover:shadow-2xl hover:shadow-emerald-500/60 transition-all duration-200"
             >
               <Sparkles className="mr-2 h-5 w-5" />
               Get Started Free
@@ -125,7 +128,7 @@ export default function CTA() {
           </motion.div>
 
           <motion.p 
-            className="mt-8 text-emerald-200 text-sm"
+            className="mt-8 text-zinc-400 text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

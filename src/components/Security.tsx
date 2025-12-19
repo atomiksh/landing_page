@@ -91,7 +91,7 @@ export default function Security() {
             opacity: [0.1, 0.15, 0.1],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-0 right-0 w-96 h-96 rounded-full bg-lime-400/10 blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl"
         />
         <motion.div
           animate={{
@@ -99,7 +99,7 @@ export default function Security() {
             opacity: [0.1, 0.15, 0.1],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-lime-500/10 blur-3xl"
+          className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl"
         />
       </div>
 
@@ -118,13 +118,13 @@ export default function Security() {
             transition={{ duration: 0.6 }}
           >
             {/* Radioactive Ambient Glow Behind Title */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-lime-500 opacity-10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-600 opacity-10 blur-[120px] rounded-full pointer-events-none" />
             
             <motion.div
               className="flex items-center justify-center gap-3 mb-6 relative z-10"
               animate={iconPulse}
             >
-              <Shield className="w-12 h-12 text-lime-400" />
+              <Shield className="w-12 h-12 text-emerald-400" />
             </motion.div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 relative z-10">
               Security at Atomik
@@ -149,7 +149,7 @@ export default function Security() {
                     ease: 'easeOut',
                     delay: 0.3 + (index * 0.1)
                   }}
-                  className="group bg-zinc-900/40 backdrop-blur-sm rounded-2xl border border-zinc-800 p-6 cursor-default transition-all duration-300 hover:border-lime-500/50 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] hover:shadow-[inset_0_0_20px_rgba(132,204,22,0.1)] hover:-translate-y-1"
+                  className="group bg-zinc-900/40 backdrop-blur-sm rounded-2xl border border-zinc-800 p-6 cursor-default transition-all duration-300 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.1)] hover:shadow-[inset_0_0_20px_rgba(16,185,129,0.1)] hover:-translate-y-1"
                 >
                   <motion.div
                     className="flex items-start gap-4"
@@ -160,7 +160,7 @@ export default function Security() {
                       animate={iconPulse}
                       className="flex items-center justify-center flex-shrink-0"
                     >
-                      <IconComponent className="w-8 h-8 text-lime-400 group-hover:text-lime-300 group-hover:scale-110 transition-all duration-300" />
+                      <IconComponent className="w-8 h-8 text-emerald-400 group-hover:text-emerald-300 group-hover:scale-110 transition-all duration-300" />
                     </motion.div>
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-white mb-2">
@@ -189,11 +189,11 @@ export default function Security() {
               download="Atomik Security & Trust Document.pdf"
               whileHover={{
                 scale: 1.05,
-                boxShadow: '0 0 60px rgba(132,204,22,0.5)',
+                boxShadow: '0 0 60px rgba(16,185,129,0.5)',
                 transition: { duration: 0.2 },
               }}
               whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center justify-center px-10 py-4 text-base font-bold text-zinc-950 bg-lime-400 rounded-lg hover:bg-lime-300 transition-all duration-300 shadow-lg shadow-lime-400/30 hover:shadow-xl hover:shadow-lime-400/40"
+              className="group inline-flex items-center justify-center px-10 py-4 text-base font-bold text-white bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/40"
             >
               Download Full Security Architecture (PDF)
               <motion.span

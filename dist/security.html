@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()" />
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' data: https:;
+      connect-src 'self';
+      frame-ancestors 'none';
+      base-uri 'self';
+      upgrade-insecure-requests;
+    " />
+    
+    <title>Security at Atomik - Atomik</title>
+    <meta name="description" content="Security at Atomik - We believe in radical transparency. Here is how we secure your client data.">
+    <link rel="canonical" href="https://atomik.sh/security.html" />
+    <meta property="og:title" content="Security at Atomik - Atomik" />
+    <meta property="og:description" content="Security at Atomik - We believe in radical transparency. Here is how we secure your client data." />
+    <meta property="og:url" content="https://atomik.sh/security.html" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
+    <link rel="alternate icon" href="/atomik-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-slate-50 to-white text-slate-800 antialiased">
+    <div class="min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <a href="/" class="flex items-center gap-2 text-slate-600 hover:text-emerald-600 mb-8 transition-colors inline-flex">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+                Back to Home
+            </a>
+
+            <!-- Header Section -->
+            <div class="mb-12 text-center">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                    Security at Atomik
+                </h1>
+                <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                    We believe in radical transparency. Here is how we secure your client data.
+                </p>
+            </div>
+
+            <!-- Security Guarantees Grid -->
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <!-- Data Isolation -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Data Isolation</h3>
+                            <p class="text-slate-600 leading-relaxed">Multi-tenant architecture with strict organization-level isolation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Encryption -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Encryption</h3>
+                            <p class="text-slate-600 leading-relaxed">TLS in transit, encryption at rest (configurable)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access Control -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Access Control</h3>
+                            <p class="text-slate-600 leading-relaxed">Role-based access control enforced at API level</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audit Logging -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Audit Logging</h3>
+                            <p class="text-slate-600 leading-relaxed">Comprehensive logging of all actions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Validation -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">Input Validation</h3>
+                            <p class="text-slate-600 leading-relaxed">Defense against injection attacks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- On-Premise Option -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-2">On-Premise Option</h3>
+                            <p class="text-slate-600 leading-relaxed">Complete data sovereignty (Q2 2026)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center">
+                <a href="/atomik-security-whitepaper.pdf" download="Atomik Security & Trust Document.pdf" class="inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-all duration-200 hover:shadow-lg hover:shadow-emerald-500/20 hover:scale-105 active:scale-95">
+                    Download Full Security Architecture (PDF)
+                    <svg class="ml-2 h-5 w-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

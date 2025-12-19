@@ -48,7 +48,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
               >
                 {link.name}
                 <motion.span 
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-400 group-hover:w-full transition-all duration-300" 
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300" 
                   layoutId={`underline-${link.name}`}
                 />
               </motion.a>
@@ -62,7 +62,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
               className="text-sm font-medium text-zinc-200 hover:text-white transition-colors relative group"
             >
               Contact Sales
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lime-400 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300" />
             </motion.button>
           </div>
 
@@ -84,9 +84,9 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 }}
-              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(132,204,22,0.4)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(16,185,129,0.4)' }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-zinc-950 bg-lime-400 rounded-lg hover:bg-lime-300 transition-all duration-200 hover:shadow-lg hover:shadow-lime-400/50 text-sm group"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all duration-200 hover:shadow-lg hover:shadow-emerald-500/50 text-sm group"
             >
               Sign Up
               <motion.span
@@ -150,7 +150,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="block text-base font-medium text-zinc-200 hover:text-lime-400 hover:bg-zinc-800 rounded-lg px-4 py-3 transition-all"
+                  className="block text-base font-medium text-zinc-200 hover:text-emerald-400 hover:bg-zinc-800 rounded-lg px-4 py-3 transition-all"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
@@ -164,7 +164,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
-                className="block w-full text-left text-base font-medium text-zinc-200 hover:text-lime-400 hover:bg-zinc-800 rounded-lg px-4 py-3 transition-all"
+                className="block w-full text-left text-base font-medium text-zinc-200 hover:text-emerald-400 hover:bg-zinc-800 rounded-lg px-4 py-3 transition-all"
               >
                 Contact Sales
               </motion.button>
@@ -177,7 +177,7 @@ export default function Navigation({ onContactSalesClick }: NavigationProps) {
                 <a href="https://app.atomik.sh" className="block w-full text-center px-6 py-3 text-sm font-semibold text-zinc-200 rounded-lg hover:bg-zinc-800/50 transition-all duration-200">
                   Sign In
                 </a>
-                <a href="https://app.atomik.sh" className="block w-full text-center px-6 py-3 text-sm font-semibold text-zinc-950 bg-lime-400 rounded-lg hover:bg-lime-300 transition-all duration-200 hover:shadow-lg hover:shadow-lime-400/50">
+                <a href="https://app.atomik.sh" className="block w-full text-center px-6 py-3 text-sm font-semibold text-white bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all duration-200 hover:shadow-lg hover:shadow-emerald-500/50">
                   Sign Up →
                 </a>
               </motion.div>

@@ -49,7 +49,7 @@ export default function Hero() {
             opacity: [0.2, 0.4, 0.2],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-lime-400/20 blur-3xl"
+          className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl"
         />
         <motion.div
           animate={{
@@ -57,7 +57,7 @@ export default function Hero() {
             opacity: [0.2, 0.4, 0.2],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-lime-500/20 blur-3xl"
+          className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl"
         />
         <motion.div
           animate={{
@@ -65,7 +65,7 @@ export default function Hero() {
             y: [0, -50, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-lime-400/15 blur-3xl"
+          className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-emerald-500/15 blur-3xl"
         />
       </div>
 
@@ -85,9 +85,9 @@ export default function Hero() {
             <motion.span
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-2 h-2 rounded-full bg-lime-400"
+              className="w-2 h-2 rounded-full bg-emerald-400"
             />
-            <Sparkles className="w-4 h-4 text-lime-400" />
+            <Sparkles className="w-4 h-4 text-emerald-400" />
             <span className="text-sm font-medium text-zinc-200">
               AI-Powered Report Automation
             </span>
@@ -112,7 +112,7 @@ export default function Hero() {
           {/* Value proposition */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-lime-400 font-semibold mb-10"
+            className="text-lg md:text-xl text-emerald-400 font-semibold mb-10"
           >
             You can focus on hacking and get paid faster.
           </motion.p>
@@ -124,9 +124,9 @@ export default function Hero() {
           >
             <motion.a
               href="https://app.atomik.sh"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(132,204,22,0.6)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(16,185,129,0.6)' }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-zinc-950 bg-lime-400 rounded-lg hover:bg-lime-300 transition-all duration-300 shadow-lg shadow-lime-400/50 hover:shadow-xl hover:shadow-lime-400/60"
+              className="group inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-white bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all duration-300 shadow-lg shadow-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/60"
             >
               Get Started Free
               <motion.span

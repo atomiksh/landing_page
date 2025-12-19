@@ -69,7 +69,7 @@ export default function ProductShowcase() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                 activeTab === tab.id
-                  ? 'bg-lime-400 text-zinc-950 shadow-lg shadow-lime-400/25'
+                  ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
                   : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
               }`}
             >
@@ -126,7 +126,7 @@ function ProjectsMockup() {
       <div className="p-6 border-b border-slate-100">
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-slate-800">All Projects</h3>
-          <button className="px-4 py-2 bg-lime-400 text-zinc-950 text-sm font-medium rounded-lg">
+          <button className="px-4 py-2 bg-emerald-500 text-white text-sm font-medium rounded-lg">
             + New Project
           </button>
         </div>
@@ -144,14 +144,14 @@ function ProjectsMockup() {
             </div>
             <div className="flex items-center gap-4">
               <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                project.status === 'Active' ? 'bg-lime-100 text-lime-700' :
+                project.status === 'Active' ? 'bg-emerald-100 text-emerald-700' :
                 project.status === 'Review' ? 'bg-yellow-100 text-yellow-700' :
                 'bg-slate-100 text-slate-600'
               }`}>
                 {project.status}
               </span>
               <div className="w-32 h-2 bg-slate-200 rounded-full">
-                <div className="h-full bg-lime-400 rounded-full" style={{ width: `${project.progress}%` }} />
+                <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${project.progress}%` }} />
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@ function FindingsMockup() {
             <button className="px-4 py-2 text-slate-600 text-sm font-medium rounded-lg border border-slate-200">
               Cancel
             </button>
-            <button className="px-4 py-2 bg-lime-400 text-zinc-950 text-sm font-medium rounded-lg">
+            <button className="px-4 py-2 bg-emerald-500 text-white text-sm font-medium rounded-lg">
               Save Finding
             </button>
           </div>
@@ -228,7 +228,7 @@ function ReportsMockup() {
             { format: 'HTML', icon: '🌐', desc: 'Web viewing' },
           ].map((option) => (
             <button key={option.format} className={`p-4 rounded-xl border-2 text-left transition-all ${
-              option.format === 'PDF' ? 'border-lime-400 bg-lime-50' : 'border-slate-200 hover:border-slate-300'
+              option.format === 'PDF' ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 hover:border-slate-300'
             }`}>
               <span className="text-2xl mb-2 block">{option.icon}</span>
               <p className="font-semibold text-slate-800">{option.format}</p>
@@ -241,7 +241,7 @@ function ReportsMockup() {
             <p className="font-medium text-slate-800">Include Executive Summary</p>
             <p className="text-sm text-slate-500">AI-generated overview for stakeholders</p>
           </div>
-          <div className="w-12 h-6 bg-lime-400 rounded-full relative">
+          <div className="w-12 h-6 bg-emerald-500 rounded-full relative">
             <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full" />
           </div>
         </div>
@@ -256,7 +256,7 @@ function CollaborateMockup() {
       <div className="p-6 border-b border-slate-100">
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-slate-800">Team Activity</h3>
-          <button className="px-4 py-2 bg-lime-400 text-zinc-950 text-sm font-medium rounded-lg">
+          <button className="px-4 py-2 bg-emerald-500 text-white text-sm font-medium rounded-lg">
             + Invite Member
           </button>
         </div>
@@ -272,7 +272,7 @@ function CollaborateMockup() {
             <div className="flex-1">
               <p className="text-slate-800">
                 <span className="font-medium">{activity.user}</span> {activity.action}{' '}
-                <span className="font-medium text-lime-400">{activity.target}</span>
+                <span className="font-medium text-emerald-400">{activity.target}</span>
               </p>
               <p className="text-sm text-slate-500">{activity.time}</p>
             </div>
